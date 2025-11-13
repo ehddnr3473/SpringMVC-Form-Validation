@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원가입</title>
+</head>
+<body>
+    <form th:action="@{/members/join}" method="post" th:object="${memberForm}">
+        <label th:for="name">
+            이름
+            <input type="text"
+                   th:field="*{name}"
+                   placeholder="이름을 입력하세요."/>
+        </label>
+        <p th:if="${#fields.hasErrors('name')}"
+           th:errors="*{name}">Name Error</p>
+        <br>
+        <label th:for="email">
+            이메일
+            <input
+                    id="email"
+                    th:field="*{email}"
+                    type="email"
+                    placeholder="example@domain.com"
+            />
+        </label>
+        <p th:if="${#fields.hasErrors('email')}"
+           th:errors="*{email}">Email Error</p>
+        <br>
+        <label th:for="age">
+            나이
+            <input type="text"
+                   th:field="*{age}"
+                   placeholder="나이를 입력하세요."/>
+        </label>
+        <p th:if="${#fields.hasErrors('age')}"
+           th:errors="*{age}">Age Error</p>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
